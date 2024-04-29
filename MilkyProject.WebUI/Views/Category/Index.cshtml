@@ -19,10 +19,10 @@
             <tr>
                 <td>@item.categoryId</td>
                 <td>@item.catgoryName</td>
-                <td><a href="#" class="btn btn-danger">Sil</a></td>
-                <td><a href="#" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Category/DeleteCategory/@item.categoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Category/UpdateCategory/@item.categoryId" class="btn btn-success">Güncelle</a></td>
             </tr>
         }
     </table>
-    <td><a href="#" class="btn btn-primary">Yeni Kategori</a></td>
+    <td><a href="/Category/CreateCategory/" class="btn btn-primary">Yeni Kategori</a></td>
 </div>
