@@ -33,6 +33,11 @@ namespace MilkProject.BusinessLayer.Concrete
             return _productDal.GetListAll();
         }
 
+        public List<Product> TGetProductsWithCategory()
+        {
+            return TGetProductsWithCategory();
+        }
+
         public void TInsert(Product entity)
         {
             _productDal.Insert(entity);

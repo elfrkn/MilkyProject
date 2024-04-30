@@ -3,6 +3,7 @@ using MilkProject.BusinessLayer.Concrete;
 using MilkyProject.DataAccessLayer.Abstract;
 using MilkyProject.DataAccessLayer.Context;
 using MilkyProject.DataAccessLayer.EntityFramework;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,9 @@ builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 
 builder.Services.AddDbContext<MilkyContext>();
+
+builder.Services.AddControllersWithViews().AddJsonOptions(options =>
+options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

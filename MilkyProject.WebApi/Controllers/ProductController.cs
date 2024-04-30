@@ -52,5 +52,11 @@ namespace MilkyProject.WebApi.Controllers
             return Ok("Ürün başarıyla güncellendi.");
 
         }
+        [HttpGet("GetProductWithCategory")]
+        public IActionResult GetProductWithCategory()
+        {
+            var values=_productService.TGetProductsWithCategory();
+            return Ok(values);
+        }
     }
 }
