@@ -35,7 +35,7 @@ namespace MilkProject.BusinessLayer.Concrete
 
         public List<Product> TGetProductsWithCategory()
         {
-            return TGetProductsWithCategory();
+            return _productDal.GetProductsWithCategory();
         }
 
         public void TInsert(Product entity)
