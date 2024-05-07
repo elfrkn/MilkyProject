@@ -20,7 +20,7 @@ namespace MilkyProject.WebUI.ViewComponents
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData);
-                return View(values);
+                return View(values.FirstOrDefault());
             }
             return View();
         }

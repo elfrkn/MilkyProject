@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MilkProject.BusinessLayer.Abstract;
-using MilkyProject.DataAccessLayer.Abstract;
+
 
 namespace MilkyProject.WebApi.Controllers
 {
@@ -15,7 +15,6 @@ namespace MilkyProject.WebApi.Controllers
         {
             _aboutService = aboutService;
         }
-
 
         [HttpGet]
         public IActionResult AboutList()

@@ -20,6 +20,15 @@ builder.Services.AddScoped<ISliderDal , EfSliderDal>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 
+builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+
+builder.Services.AddScoped<IServiceService, ServiceManager>();
+builder.Services.AddScoped<IServiceDal, EfServiceDal>();
+
+builder.Services.AddScoped<IEmployerService, EmployerManager>();
+builder.Services.AddScoped<IEmployerDal, EfEmployerDal>();
+
 builder.Services.AddDbContext<MilkyContext>();
 
 builder.Services.AddControllersWithViews().AddJsonOptions(options =>
