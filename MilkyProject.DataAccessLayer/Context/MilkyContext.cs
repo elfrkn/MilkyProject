@@ -19,5 +19,10 @@ namespace MilkyProject.DataAccessLayer.Context
         public  DbSet<Category> Categories { get; set; }
         public  DbSet<Product> Products { get; set; }
         public  DbSet<Slider> Sliders { get; set; }
+        public  DbSet<About> Abouts { get; set; }
+        public  DbSet<Service> Services { get; set; }
+        public  DbSet<Employer> Employers { get; set; }
+        public  DbSet<Testimonial> Testimonials { get; set; }
+        public  DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }

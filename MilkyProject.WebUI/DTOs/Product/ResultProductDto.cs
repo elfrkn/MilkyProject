@@ -1,4 +1,4 @@
-﻿namespace MilkyProject.WebUI.DTOs
+﻿namespace MilkyProject.WebUI.DTOs.Product
 {
     public class ResultProductDto
     {
