@@ -24,5 +24,9 @@ namespace MilkyProject.DataAccessLayer.Context
         public  DbSet<Employer> Employers { get; set; }
         public  DbSet<Testimonial> Testimonials { get; set; }
         public  DbSet<SocialMedia> SocialMedias { get; set; }
+        public  DbSet<Adress> Adresses { get; set; }
+        public  DbSet<Newsletter> Newsletters { get; set; }
+        public  DbSet<Contact> Contacts { get; set; }
+        public  DbSet<Gallery> Galleries { get; set; }
     }
 }

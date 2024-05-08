@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MilkyProject.WebUI.DTOs.About;
+using MilkyProject.WebUI.DTOs.Adress;
+using MilkyProject.WebUI.DTOs.Testimonial;
 using Newtonsoft.Json;
 
 namespace MilkyProject.WebUI.ViewComponents

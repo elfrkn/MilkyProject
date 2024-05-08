@@ -29,6 +29,24 @@ builder.Services.AddScoped<IServiceDal, EfServiceDal>();
 builder.Services.AddScoped<IEmployerService, EmployerManager>();
 builder.Services.AddScoped<IEmployerDal, EfEmployerDal>();
 
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
+
+builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
+builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+
+builder.Services.AddScoped<IContactService, ContactManager>();
+builder.Services.AddScoped<IContactDal, EfContactDal>();
+
+builder.Services.AddScoped<IAdressService, AdressManager>();
+builder.Services.AddScoped<IAdressDal, EfAdressDal>();
+
+builder.Services.AddScoped<INewsletterService, NewsletterManager>();
+builder.Services.AddScoped<INewsletterDal, EfNewsletterDal>();
+
+builder.Services.AddScoped<IGalleryService, GalleryManager>();
+builder.Services.AddScoped<IGalleryDal, EfGalleryDal>();
+
 builder.Services.AddDbContext<MilkyContext>();
 
 builder.Services.AddControllersWithViews().AddJsonOptions(options =>

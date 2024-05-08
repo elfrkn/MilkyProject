@@ -1,28 +1,8 @@
-﻿@model List<MilkyProject.WebUI.DTOs.Category.ResultCategoryDto>
+﻿
 @{
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+@await Component.InvokeAsync("_UICategoryComponentPartial")
 
-
-<div class="container">
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            <th>Kategori Adı</th>
-            <th>Sil</th>
-            <th>Güncelle</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.categoryId</td>
-                <td>@item.categoryName</td>
-                <td><a href="/Category/DeleteCategory/@item.categoryId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Category/UpdateCategory/@item.categoryId" class="btn btn-success">Güncelle</a></td>
-            </tr>
-        }
-    </table>
-    <td><a href="/Category/CreateCategory/" class="btn btn-primary">Yeni Kategori</a></td>
-</div>

@@ -41,6 +41,34 @@ namespace MilkyProject.DataAccessLayer.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Adress", b =>
+                {
+                    b.Property<int>("AdressID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdressID"), 1L, 1);
+
+                    b.Property<string>("BusinessHoursMidWeek")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BusinessHoursMidWeekand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdressID");
+
+                    b.ToTable("Adresses");
+                });
+
             modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -52,9 +80,37 @@ namespace MilkyProject.DataAccessLayer.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Contact", b =>
+                {
+                    b.Property<int>("ContactID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactID"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ContactID");
+
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Employer", b =>
@@ -66,20 +122,51 @@ namespace MilkyProject.DataAccessLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployerID"), 1L, 1);
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Job")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameSurname")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployerID");
 
                     b.ToTable("Employers");
+                });
+
+            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Gallery", b =>
+                {
+                    b.Property<int>("GalleryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GalleryID"), 1L, 1);
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GalleryID");
+
+                    b.ToTable("Galleries");
+                });
+
+            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Newsletter", b =>
+                {
+                    b.Property<int>("NewsletterID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NewsletterID"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NewsletterID");
+
+                    b.ToTable("Newsletters");
                 });
 
             modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Product", b =>
@@ -178,18 +265,17 @@ namespace MilkyProject.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Icon")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SocialMediaID");
+
+                    b.HasIndex("EmployerID");
 
                     b.ToTable("SocialMedias");
                 });
@@ -228,9 +314,25 @@ namespace MilkyProject.DataAccessLayer.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.SocialMedia", b =>
+                {
+                    b.HasOne("MilkProject.EntityLayer.Concrete.Employer", "Employer")
+                        .WithMany("SocialMedias")
+                        .HasForeignKey("EmployerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employer");
+                });
+
             modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Employer", b =>
+                {
+                    b.Navigation("SocialMedias");
                 });
 #pragma warning restore 612, 618
         }
