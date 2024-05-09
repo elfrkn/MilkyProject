@@ -1,37 +1,88 @@
 ﻿@model List<MilkyProject.WebUI.DTOs.Product.ResultProductWithCategoryDto>
 @{
-    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+@{
+    string productStatus = "";
+    string colour = "";
+}
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Ürünler</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ürün Adı</th>
+                            <th scope="col">Eski Fiyat</th>
+                            <th scope="col">Yeni Fiyat</th>
+                            <th scope="col">Kategori Adı</th>
+                            <th scope="col">Stok</th>
+                            <th scope="col">Sil</th>
+                            <th scope="col">Güncelle</th>
 
-<div class="container">
-    <br /><br />
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            <th>Ürün Adı</th>
-            <th>Eski Fiyat</th>
-            <th>Yeni Fiyat</th>
-            <th>Kategori Adı</th>
-            <th>Durum</th>
-            <th>Sil</th>
-            <th>Güncelle</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.productId</td>
-                <td>@item.productName</td>
-                <td>@item.oldPrice</td>
-                <td>@item.newPrice</td>
-                <td>@item.category.CategoryName</td>
-                <td>@item.status</td>
-                <td><a href="/Product/DeleteProduct/@item.productId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Product/UpdateProduct/@item.productId" class="btn btn-success">Güncelle</a></td>
-            </tr>
-        }
-    </table>
-    <td><a href="/Product/CreateProduct/" class="btn btn-primary">Yeni Ürün</a></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>
+                                    @count
+                                </td>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <a href="#" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="@item.imageUrl">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="mb-0 text-sm">@item.productName</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>
+                                    @item.oldPrice
+                                </td>
+                                <td>
+                                    @item.newPrice
+                                </td>
+                                <td>
+                                    @item.category.CategoryName
+                                </td>
+                                <td>
+                                    @if (item.status == true)
+                                    {
+                                        productStatus = "Var";
+                                        colour = "bg-success";
+                                    }
+                                    else
+                                    {
+                                        productStatus = "Yok";
+                                        colour = "bg-warning";
+                                    }
+
+                                    <span class="badge badge-dot mr-4">
+                                        <i class="@colour"></i> @productStatus
+                                    </span>
+                                </td>
+                                <td><a href="/Product/DeleteProduct/@item.productId" class="btn btn-warning">Sil</a></td>
+                                <td><a href="/Product/UpdateProduct/@item.productId" class="btn btn-info">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+        <br />
+        <td><a href="/Product/CreateProduct/" class="btn btn-primary">Yeni Ürün Girişi</a></td>
+    </div>
 </div>
