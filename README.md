@@ -11,5 +11,4 @@ Admin yönetim panelinde ise site sayfaları ile ilgili tüm crud işlemleri yap
   <li>Swagger </li>
   <li>Identity</li>
   <li>Repository Design Pattern</li>
-  <li>N-Tier Architecture</li>
 </ul>
