@@ -30,5 +30,25 @@ namespace MilkyProject.WebApi.Controllers
             _contactService.TInsert(contact);
             return Ok("Başarıyla eklendi.");
         }
+
+        [HttpDelete]
+        public IActionResult DeleteContact(int id)
+        {
+            _contactService.TDelete(id);
+            return Ok("Kategori başarıyla silindi");
+        }
+
+        [HttpPut]
+        public IActionResult UpdateContact(Contact contact)
+        {
+            _contactService.TUpdate(contact);
+            return Ok("Kategori başarıyla güncellendi");
+        }
+        [HttpGet("GetContact")]
+        public IActionResult GetContact(int id)
+        {
+            var value = _contactService.TGetById(id);
+            return Ok(value);
+        }
     }
 }

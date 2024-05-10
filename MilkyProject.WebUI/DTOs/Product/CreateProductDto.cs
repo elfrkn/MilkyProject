@@ -2,11 +2,13 @@
 {
     public class CreateProductDto
     {
-        public string productName { get; set; }
-        public decimal oldPrice { get; set; }
-        public decimal newPrice { get; set; }
-        public string imageUrl { get; set; }
-        public bool status { get; set; }
+        public int ProductId { get; set; }
+        public string? ProductName { get; set; }
+        public decimal OldPrice { get; set; }
+        public decimal NewPrice { get; set; }
+        public string? ImageUrl { get; set; }
+        public bool Status { get; set; }
+        public int? CategoryId { get; set; }
 
     }
 }

@@ -1,0 +1,44 @@
+﻿@model List<MilkyProject.WebUI.DTOs.Newsletter.ResultNewsletterDto>
+@{
+    ViewData["Title"] = "NewsletterList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Abone Mail Listesi</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Abone Mail Adresi</th>
+                            <th scope="col">Sil</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>
+                                    @count
+                                </td>
+                                <td>@item.Email</td>
+
+                               
+                                <td><a href="/Admin/Newsletter/DeleteNewsletter/@item.NewsletterID" class="btn btn-warning">Mail Bülteninden Kaldır</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

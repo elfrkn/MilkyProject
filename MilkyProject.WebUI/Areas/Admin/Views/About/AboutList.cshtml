@@ -1,0 +1,42 @@
+﻿@model MilkyProject.WebUI.DTOs.About.ResultAboutDto
+@{
+    ViewData["Title"] = "AboutList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Hakkımızda</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    </thead>
+                    <tbody>
+                        <div class="container">
+                            <div class="form-group">
+                                <input type="hidden" name="@Model.AboutID" />
+                                <label for="exampleFormControlInput1">Başlık</label>
+                                <input type="text" name="Title" value="@Model.Title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Açıklama</label>
+                                
+                                <textarea rows="10" class="form-control">@Model.Description</textarea>
+                            </div>
+                            <div class="form-group">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <td><a href="/Admin/About/DeleteAbout/@Model.AboutID" class="btn btn-warning">Sil</a></td>
+        <td><a href="/Admin/About/UpdateAbout/@Model.AboutID" class="btn btn-info">Güncelle</a></td>
+    </div>
+</div>
+
+
+

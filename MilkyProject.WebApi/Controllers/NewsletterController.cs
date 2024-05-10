@@ -17,7 +17,7 @@ namespace MilkyProject.WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult EmployerList()
+        public IActionResult NewsletterList()
         {
             var values = _newsletterService.TGetListAll();
             return Ok(values);

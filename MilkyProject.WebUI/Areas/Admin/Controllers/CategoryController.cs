@@ -14,7 +14,7 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<IActionResult>  Index()
+        public async Task<IActionResult>  CategoryList()
         {
 
             var client = _httpClientFactory.CreateClient();
@@ -44,7 +44,7 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.PostAsync("https://localhost:7166/api/Category", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("CategoryList");
             }
             return View();
         }
@@ -55,7 +55,7 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.DeleteAsync("https://localhost:7166/api/Category?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("CategoryList");
             }
             return View();
 
@@ -82,7 +82,7 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7166/api/Category", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("CategoryList");
             }
             return View();
         }

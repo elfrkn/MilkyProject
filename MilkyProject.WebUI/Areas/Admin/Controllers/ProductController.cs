@@ -1,20 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using MilkyProject.DataAccessLayer.Context;
+using MilkyProject.WebUI.DTOs.Category;
 using MilkyProject.WebUI.DTOs.Product;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Text;
 
 namespace MilkyProject.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/Product")]
     public class ProductController : Controller
+
     {
+
+       
         private readonly IHttpClientFactory _httpClientFactory;
 
         public ProductController(IHttpClientFactory httpClientFactory)
         {
+          
             _httpClientFactory = httpClientFactory;
         }
-       
+
+        [Route("")]
+        [Route("ProductList")]
         public async Task<IActionResult> ProductList()
         {
             var client = _httpClientFactory.CreateClient();
@@ -29,32 +40,51 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateProduct()
+        [Route("CreateProduct")]
+        public async Task<IActionResult> CreateProduct()
         {
-            return View();
+
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7166/api/Category");
+          
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+                List<SelectListItem> categoryList = (from x in values
+                                                     select new SelectListItem
+                                                     {
+                                                         Text = x.CategoryName,
+                                                         Value = x.CategoryId.ToString()
+                                                     }).ToList();
+            ViewBag.CategoryList = categoryList;
+                return View();
         }
 
         [HttpPost]
+        [Route("CreateProduct")]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
+            createProductDto.Status = true;
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createProductDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7166/api/Product", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductList");
             }
             return View();
         }
 
+        [Route("DeleteProduct/{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
+            
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync("https://localhost:7166/api/Product?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductList");
             }
             return View();
 
@@ -86,5 +116,7 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
+    
     }
 }
