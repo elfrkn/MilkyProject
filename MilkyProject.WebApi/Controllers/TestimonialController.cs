@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MilkProject.BusinessLayer.Abstract;
+using MilkProject.EntityLayer.Concrete;
 
 namespace MilkyProject.WebApi.Controllers
 {
@@ -21,5 +22,34 @@ namespace MilkyProject.WebApi.Controllers
             var values = _testimonialService.TGetListAll();
             return Ok(values);
         }
+
+        [HttpPost]
+
+        public IActionResult CreateTestimonial(Testimonial testimonial)
+        {
+            _testimonialService.TInsert(testimonial);
+            return Ok("Başarıyla eklendi.");
+        }
+        [HttpDelete]
+
+        public IActionResult DeleteService(int id)
+        {
+            _testimonialService.TDelete(id);
+            return Ok("başarıyla silindi");
+        }
+
+        [HttpPut]
+        public IActionResult UpdatTestimonial(Testimonial testimonial)
+        {
+            _testimonialService.TUpdate(testimonial);
+            return Ok("başarıyla güncellendi");
+        }
+        [HttpGet("GetTestimonial")]
+        public IActionResult GetTestimonial(int id)
+        {
+            var value = _testimonialService.TGetById(id);
+            return Ok(value);
+        }
+
     }
 }

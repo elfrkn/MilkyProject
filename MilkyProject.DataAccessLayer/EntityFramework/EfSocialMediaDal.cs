@@ -15,5 +15,7 @@ namespace MilkyProject.DataAccessLayer.EntityFramework
         public EfSocialMediaDal(MilkyContext context) : base(context)
         {
         }
+
+    
     }
 }

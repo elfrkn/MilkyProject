@@ -37,7 +37,7 @@ namespace MilkyProject.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddNewsletter(CreateNewsletterDto createNewsletterDto)
+        public async Task<IActionResult> AddNewsletter(CreateGalleryDto createNewsletterDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createNewsletterDto);

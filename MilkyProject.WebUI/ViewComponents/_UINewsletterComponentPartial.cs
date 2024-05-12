@@ -7,7 +7,7 @@ namespace MilkyProject.WebUI.ViewComponents
     {
         public IViewComponentResult Invoke()
         {
-            return View(new CreateNewsletterDto());
+            return View(new CreateGalleryDto());
         }
     }
 }

@@ -1,31 +1,45 @@
 ﻿@model MilkyProject.WebUI.DTOs.Product.UpdateProductDto
 @{
-    Layout = null;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<form method="post">
-    <div class="container">
-        <br /><br />
 
-        <label>Ürün ID</label>
-        <input type="text" asp-for="productId" class="form-control" />
-        <br />
-        <label>Ürün Adı</label>
-        <input type="text" asp-for="productName" class="form-control" />
-        <br />
-        <label>Eski Fiyat</label>
-        <input type="text" asp-for="oldPrice" class="form-control" />
-        <br />
-        <label>Yeni Fiyat</label>
-        <input type="text" asp-for="newPrice" class="form-control" />
-        <br />
-        <label>Görsel Yolu</label>
-        <input type="text" asp-for="imageUrl" class="form-control" />
-        <br />
-        <label>Durum</label>
-        <input type="text" asp-for="status" class="form-control" />
-        <br />
-        <button class="btn btn-primary">Ürünü Güncelle</button>
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Ürünler</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tbody>
+                        <form method="post">
+                            <div class="container">
+                                <br /><br />
+                                <input type="hidden"  asp-for="productId"/>
+                                <label>Ürün Adı</label>
+                                <input type="text" name="ProductName" class="form-control" />
+                                <br />
+                                <label>Eski Fiyat</label>
+                                <input type="text" name="OldPrice" class="form-control" />
+                                <br />
+                                <label>Yeni Fiyat</label>
+                                <input type="text" name="NewPrice" class="form-control" />
+                                <br />
+                                <label>Görsel Yolu</label>
+                                <input type="text" name="ImageUrl" class="form-control" />
+                                <br />
+                                <label>Kategori Seçin</label>
+                                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
+                                <br />
+                                <button type="submit" class="btn btn-primary">Ürünü Ekle</button>
+                                <br /><br />
+                            </div>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</form>
+</div>

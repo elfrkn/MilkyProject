@@ -5,15 +5,15 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkyProject.WebApi", "MilkyProject.WebApi\MilkyProject.WebApi.csproj", "{967A37BF-BA14-43DF-A4D2-8FF6BA743359}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkProject.EntityLayer", "MilkProject.EntityLayer\MilkProject.EntityLayer.csproj", "{DA2A0C22-3D33-4135-B084-E0597B0E4432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkyProject.EntityLayer", "MilkProject.EntityLayer\MilkyProject.EntityLayer.csproj", "{DA2A0C22-3D33-4135-B084-E0597B0E4432}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkyProject.DataAccessLayer", "MilkyProject.DataAccessLayer\MilkyProject.DataAccessLayer.csproj", "{985F570A-2B6B-4925-A516-6EF760CBCEDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkProject.BusinessLayer", "MilkProject.BusinessLayer\MilkProject.BusinessLayer.csproj", "{87BE47EB-187E-4D92-B119-9ED005EF02E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkyProject.BusinessLayer", "MilkProject.BusinessLayer\MilkyProject.BusinessLayer.csproj", "{87BE47EB-187E-4D92-B119-9ED005EF02E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkyProject.DtoLayer", "MilkyProject.DtoLayer\MilkyProject.DtoLayer.csproj", "{EADCBC7A-AA89-4806-94A4-9BB2D3C38C0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilkyProject.WebUI", "MilkyProject.WebUI\MilkyProject.WebUI.csproj", "{6E541925-0FDF-4A23-988E-036AB4E5176D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilkyProject.WebUI", "MilkyProject.WebUI\MilkyProject.WebUI.csproj", "{6E541925-0FDF-4A23-988E-036AB4E5176D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

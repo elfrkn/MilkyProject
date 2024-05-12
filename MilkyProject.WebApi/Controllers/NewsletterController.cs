@@ -30,5 +30,31 @@ namespace MilkyProject.WebApi.Controllers
             _newsletterService.TInsert(newsletter);
             return Ok("Başarıyla eklendi.");
         }
+        [HttpDelete]
+
+        public IActionResult DeleteNewsletter(int id)
+        {
+            _newsletterService.TDelete(id);
+            return Ok("başarıyla silindi");
+        }
+
+        [HttpPut]
+        public IActionResult UpdateNewsletter(Newsletter newsletter)
+        {
+            _newsletterService.TUpdate(newsletter);
+            return Ok("başarıyla güncellendi");
+        }
+        [HttpGet("GetNewsletter")]
+        public IActionResult GetNewsletter(int id)
+        {
+            var value = _newsletterService.TGetById(id);
+            return Ok(value);
+        }
+
+        [HttpGet("GetNewsletterCount")]
+        public IActionResult GetNewsletterCount()
+        {
+            return Ok(_newsletterService.TGetNewsletterCount());
+        }
     }
 }

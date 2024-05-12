@@ -50,5 +50,12 @@ namespace MilkyProject.WebApi.Controllers
             var value = _contactService.TGetById(id);
             return Ok(value);
         }
+
+        [HttpGet("GetContactCount")]
+
+        public IActionResult GetContactCount()
+        {
+          return Ok(_contactService.TGetContactCount());
+        }
     }
 }

@@ -261,9 +261,6 @@ namespace MilkyProject.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SocialMediaID"), 1L, 1);
 
-                    b.Property<int>("EmployerID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Icon")
                         .HasColumnType("nvarchar(max)");
 
@@ -274,8 +271,6 @@ namespace MilkyProject.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SocialMediaID");
-
-                    b.HasIndex("EmployerID");
 
                     b.ToTable("SocialMedias");
                 });
@@ -314,25 +309,9 @@ namespace MilkyProject.DataAccessLayer.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.SocialMedia", b =>
-                {
-                    b.HasOne("MilkProject.EntityLayer.Concrete.Employer", "Employer")
-                        .WithMany("SocialMedias")
-                        .HasForeignKey("EmployerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employer");
-                });
-
             modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("MilkProject.EntityLayer.Concrete.Employer", b =>
-                {
-                    b.Navigation("SocialMedias");
                 });
 #pragma warning restore 612, 618
         }

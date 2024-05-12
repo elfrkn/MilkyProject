@@ -1,8 +1,8 @@
 ﻿namespace MilkyProject.WebUI.DTOs.Newsletter
 {
-    public class CreateNewsletterDto
+    public class CreateGalleryDto
     {
-        public int NewsletterID { get; set; }
+      
         public string Email { get; set; }
     }
 }

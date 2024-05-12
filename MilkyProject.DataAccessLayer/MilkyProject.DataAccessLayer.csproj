@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MilkProject.EntityLayer\MilkProject.EntityLayer.csproj" />
+    <ProjectReference Include="..\MilkProject.EntityLayer\MilkyProject.EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>

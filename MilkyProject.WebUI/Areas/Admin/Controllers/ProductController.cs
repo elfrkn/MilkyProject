@@ -10,7 +10,7 @@ using System.Text;
 namespace MilkyProject.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/Product")]
+   
     public class ProductController : Controller
 
     {
@@ -24,8 +24,8 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        [Route("")]
-        [Route("ProductList")]
+       
+        
         public async Task<IActionResult> ProductList()
         {
             var client = _httpClientFactory.CreateClient();
@@ -40,7 +40,6 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        [Route("CreateProduct")]
         public async Task<IActionResult> CreateProduct()
         {
 
@@ -61,7 +60,6 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Route("CreateProduct")]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
             createProductDto.Status = true;
@@ -76,7 +74,7 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
             return View();
         }
 
-        [Route("DeleteProduct/{id}")]
+     
         public async Task<IActionResult> DeleteProduct(int id)
         {
             
@@ -101,18 +99,32 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
                 var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
                 return View(values);
             }
+
+            var clientCategory = _httpClientFactory.CreateClient();
+            var responseMessageCategory = await client.GetAsync("https://localhost:7166/api/Category");
+
+            var jsonDataCategory = await responseMessageCategory.Content.ReadAsStringAsync();
+            var valuesCategory = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonDataCategory);
+            List<SelectListItem> categoryList = (from x in valuesCategory
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = x.CategoryName,
+                                                     Value = x.CategoryId.ToString()
+                                                 }).ToList();
+            ViewBag.CategoryList = categoryList;
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
+            updateProductDto.status = true;
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateProductDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PutAsync("https://localhost:7166/api/Product/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductList");
             }
             return View();
         }

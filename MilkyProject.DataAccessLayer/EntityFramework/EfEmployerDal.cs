@@ -15,5 +15,11 @@ namespace MilkyProject.DataAccessLayer.EntityFramework
         public EfEmployerDal(MilkyContext context) : base(context)
         {
         }
+
+        public int GetEmployerCount()
+        {
+            var context = new MilkyContext();
+            return context.Employers.Count();
+        }
     }
 }

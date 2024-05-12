@@ -21,5 +21,12 @@ namespace MilkyProject.WebApi.Controllers
             var values = _employerService.TGetListAll();
             return Ok(values);
         }
+
+        [HttpGet("GetEmployerCount")]
+
+        public IActionResult GetEmployerCount()
+        {
+            return Ok(_employerService.TGetEmployerCount());
+        }
     }
 }

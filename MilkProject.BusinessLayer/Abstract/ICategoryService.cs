@@ -9,6 +9,6 @@ namespace MilkProject.BusinessLayer.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
-        int TGetCategoryCount();
+      public  int TGetCategoryCount();
     }
 }

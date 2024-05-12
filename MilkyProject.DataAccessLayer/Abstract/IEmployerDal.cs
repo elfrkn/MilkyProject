@@ -9,5 +9,6 @@ namespace MilkyProject.DataAccessLayer.Abstract
 {
    public  interface IEmployerDal :IGenericDal<Employer>
     {
+        public int GetEmployerCount();
     }
 }

@@ -14,7 +14,6 @@ namespace MilkProject.EntityLayer.Concrete
         public  string? NameSurname { get; set; }
         public  string? Job { get; set; }
 
-        public  List<SocialMedia> SocialMedias { get; set; }
 
     }
 }

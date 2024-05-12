@@ -28,6 +28,11 @@ namespace MilkProject.BusinessLayer.Concrete
             return _employerDal.GetById(id);
         }
 
+        public int TGetEmployerCount()
+        {
+            return _employerDal.GetEmployerCount();
+        }
+
         public List<Employer> TGetListAll()
         {
             return _employerDal.GetListAll();

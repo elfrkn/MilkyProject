@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MilkProject.BusinessLayer\MilkProject.BusinessLayer.csproj" />
-    <ProjectReference Include="..\MilkProject.EntityLayer\MilkProject.EntityLayer.csproj" />
+    <ProjectReference Include="..\MilkProject.BusinessLayer\MilkyProject.BusinessLayer.csproj" />
+    <ProjectReference Include="..\MilkProject.EntityLayer\MilkyProject.EntityLayer.csproj" />
     <ProjectReference Include="..\MilkyProject.DataAccessLayer\MilkyProject.DataAccessLayer.csproj" />
   </ItemGroup>
 

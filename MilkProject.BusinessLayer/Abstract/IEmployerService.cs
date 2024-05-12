@@ -9,5 +9,6 @@ namespace MilkProject.BusinessLayer.Abstract
 {
     public  interface IEmployerService :IGenericService<Employer>
     {
+        public int TGetEmployerCount();
     }
 }

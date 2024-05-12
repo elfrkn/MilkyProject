@@ -1,0 +1,43 @@
+﻿@model MilkyProject.WebUI.DTOs.Slider.UpdateSliderDto
+@{
+    ViewData["Title"] = "UpdateSlider";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Slider Güncelleme</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    </thead>
+                    <tbody>
+                        <form method="post">
+                            <div class="container">
+                                <div class="form-group">
+                                    <input type="hidden" asp-for="SliderId" />
+                                    <label for="exampleFormControlInput1">Resim Yolu</label>
+                                    <input type="text" asp-for="ImageUrl" class="form-control">
+                                    <br />
+                                    <label for="exampleFormControlInput1">Başlık</label>
+                                    <input type="text" asp-for="Description1" class="form-control">
+                                    <br />
+                                    <label for="exampleFormControlInput1">Açıklama</label>
+                                    <input type="text" asp-for="Description2" class="form-control">
+                                    <br />
+                                </div>
+                                <button class="btn btn-primary">Slider Güncelle</button>
+                            </div>
+                            <br />
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+

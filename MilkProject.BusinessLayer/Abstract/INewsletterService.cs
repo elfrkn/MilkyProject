@@ -9,5 +9,6 @@ namespace MilkProject.BusinessLayer.Abstract
 {
     public interface INewsletterService : IGenericService<Newsletter>
     {
+        public int TGetNewsletterCount();
     }
 }

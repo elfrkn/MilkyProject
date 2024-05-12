@@ -1,0 +1,35 @@
+﻿@model MilkyProject.WebUI.DTOs.Gallery.CreateGalleryDto
+@{
+    ViewData["Title"] = "CreateGallery";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Resim Ekleme</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    </thead>
+                    <tbody>
+                        <form method="post">
+                            <div class="container">
+                                <div class="form-group">
+                                    <label>Resim Yolu</label>
+                                    <input type="text" asp-for="ImageUrl" class="form-control">
+                                </div>
+                                <button class="btn btn-primary">Resimi Ekle</button>
+                            </div>
+                            <br />
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+

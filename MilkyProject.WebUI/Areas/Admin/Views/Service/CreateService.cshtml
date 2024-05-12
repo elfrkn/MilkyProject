@@ -1,0 +1,42 @@
+﻿@model MilkyProject.WebUI.DTOs.Service.CreateServiceDto
+@{
+    ViewData["Title"] = "CreateService";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Hizmetler</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tbody>
+                        <form method="post">
+                            <div class="container">
+                                <br /><br />
+                                <label>Resim Yolu 1</label>
+                                <input type="text" name="SmallImageUrl" class="form-control" />
+                                <br />
+                                <label>Resim Yolu 2</label>
+                                <input type="text" name="ImageUrl" class="form-control" />
+                                <br />
+                                <label>Başlık</label>
+                                <input type="text" name="Title" class="form-control" />
+                                <br />
+                                <label>Açıklama</label>
+                                <input type="text" name="Description" class="form-control" />
+                                <br />
+                                <button type="submit" class="btn btn-primary">Hizmet Ekle</button>
+                                <br /><br />
+                            </div>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
