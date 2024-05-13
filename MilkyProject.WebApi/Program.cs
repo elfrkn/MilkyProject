@@ -3,6 +3,7 @@ using MilkProject.BusinessLayer.Concrete;
 using MilkyProject.DataAccessLayer.Abstract;
 using MilkyProject.DataAccessLayer.Context;
 using MilkyProject.DataAccessLayer.EntityFramework;
+using MilkyProject.EntityLayer.Concrete;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,6 +49,8 @@ builder.Services.AddScoped<IGalleryService, GalleryManager>();
 builder.Services.AddScoped<IGalleryDal, EfGalleryDal>();
 
 builder.Services.AddDbContext<MilkyContext>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<MilkyContext>();
+
 
 builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

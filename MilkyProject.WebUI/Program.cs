@@ -1,9 +1,14 @@
 
+using MilkyProject.DataAccessLayer.Context;
+using MilkyProject.EntityLayer.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 
 builder.Services.AddHttpClient();
+builder.Services.AddDbContext<MilkyContext>();
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<MilkyContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -20,8 +25,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseAuthorization();
+app.UseAuthentication();
 app.UseRouting();
+app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
