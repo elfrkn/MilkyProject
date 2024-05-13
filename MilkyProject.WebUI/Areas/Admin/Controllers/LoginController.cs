@@ -2,17 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using MilkyProject.EntityLayer.Concrete;
 using MilkyProject.WebUI.DTOs.Login;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace MilkyProject.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class LoginController : Controller
     {
+        private readonly IHttpClientFactory _httpClientFactory;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public LoginController(SignInManager<AppUser> signInManager)
+        public LoginController(IHttpClientFactory httpClientFactory, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
+            _httpClientFactory = httpClientFactory;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -22,22 +28,24 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult>  Index(LoginDto login)
+        public async Task<IActionResult> Index(LoginDto login)
         {
-            if (ModelState.IsValid)
+            var client = _httpClientFactory.CreateClient();
+            var jsondata = JsonConvert.SerializeObject(login);
+            var content = new StringContent(jsondata, Encoding.UTF8, "application/json");
+            var resp = await client.PostAsync("https://localhost:7166/api/Login/Login", content);
+            if (resp.IsSuccessStatusCode)
             {
-                var result = await _signInManager.PasswordSignInAsync(login.UserName, login.Password, false,false);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Dashboard");
-                }
-                else
-                {
-                    return View();
-                }
+                var user = await _userManager.FindByEmailAsync(login.Email);
+                await _signInManager.PasswordSignInAsync(user, login.Password, false, false);
+                return RedirectToAction("Index", "Dashboard");
+            }
+            else
+            {
+                return View();
             }
 
-            return View();
         }
     }
 }
+
