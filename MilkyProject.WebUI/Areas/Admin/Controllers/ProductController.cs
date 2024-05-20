@@ -91,17 +91,9 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateProduct(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7166/api/Product/GetProduct?id=" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
-                return View(values);
-            }
 
             var clientCategory = _httpClientFactory.CreateClient();
-            var responseMessageCategory = await client.GetAsync("https://localhost:7166/api/Category");
+            var responseMessageCategory = await clientCategory.GetAsync("https://localhost:7166/api/Category");
 
             var jsonDataCategory = await responseMessageCategory.Content.ReadAsStringAsync();
             var valuesCategory = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonDataCategory);
@@ -112,7 +104,17 @@ namespace MilkyProject.WebUI.Areas.Admin.Controllers
                                                      Value = x.CategoryId.ToString()
                                                  }).ToList();
             ViewBag.CategoryList = categoryList;
+          
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7166/api/Product/GetProduct?id=" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
+                return View(values);
+            }
             return View();
+         
         }
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)

@@ -18,22 +18,23 @@
                             <div class="container">
                                 <br /><br />
                                 <input type="hidden"  asp-for="productId"/>
+                                <input type="hidden" asp-for="CategoryId" />
                                 <label>Ürün Adı</label>
-                                <input type="text" name="ProductName" class="form-control" />
+                                <input type="text" asp-for="productName" class="form-control" />
                                 <br />
                                 <label>Eski Fiyat</label>
-                                <input type="text" name="OldPrice" class="form-control" />
+                                <input type="text" asp-for="oldPrice" class="form-control" />
                                 <br />
                                 <label>Yeni Fiyat</label>
-                                <input type="text" name="NewPrice" class="form-control" />
+                                <input type="text" asp-for="newPrice" class="form-control" />
                                 <br />
                                 <label>Görsel Yolu</label>
-                                <input type="text" name="ImageUrl" class="form-control" />
+                                <input type="text" asp-for="imageUrl" class="form-control" />
                                 <br />
                                 <label>Kategori Seçin</label>
                                     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
                                 <br />
-                                <button type="submit" class="btn btn-primary">Ürünü Ekle</button>
+                                <button type="submit" class="btn btn-primary">Ürünü Güncelle</button>
                                 <br /><br />
                             </div>
                         </form>
